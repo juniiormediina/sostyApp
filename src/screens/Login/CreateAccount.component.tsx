@@ -32,35 +32,35 @@ export const CreateAccount = () => {
                 <StyledText className="text-base w-80">
                 Email
                 </StyledText>
-                <StyledTextInput className="w-80  border-2 border-gray-300 rounded-lg mb-9" />
+                <StyledTextInput placeholder="example@example.com" textContentType="emailAddress" className="w-80  border-2 border-gray-300 rounded-lg mb-9" />
             </StyledView>
 
             <StyledView className="flex justify-center items-center">
                 <StyledText className="text-base w-80">
                 Contraseña
                 </StyledText>
-                <StyledTextInput className="w-80  border-2 border-gray-300 rounded-lg mb-9" />
+                <StyledTextInput placeholder="***********" textContentType="password" secureTextEntry={true} className="w-80  border-2 border-gray-300 rounded-lg mb-9" />
             </StyledView>
 
             <StyledView className="flex justify-center items-center">
                 <StyledText className="text-base w-80">
                 Nombre(s)
                 </StyledText>
-                <StyledTextInput className="w-80  border-2 border-gray-300 rounded-lg mb-9" />
+                <StyledTextInput placeholder="Jhon" className="w-80  border-2 border-gray-300 rounded-lg mb-9" />
             </StyledView>
 
             <StyledView className="flex justify-center items-center">
                 <StyledText className="text-base w-80">
                 Apellido(s)
                 </StyledText>
-                <StyledTextInput className="w-80  border-2 border-gray-300 rounded-lg mb-9" />
+                <StyledTextInput placeholder="Smith" className="w-80  border-2 border-gray-300 rounded-lg mb-9" />
             </StyledView>
 
             <StyledView className="flex justify-center items-center">
                 <StyledText className="text-base w-80">
                 Celular
                 </StyledText>
-                <StyledTextInput className="w-80  border-2 border-gray-300 rounded-lg mb-9" />
+                <StyledTextInput placeholder="314 376 1024" keyboardType="numeric" className="w-80  border-2 border-gray-300 rounded-lg mb-9" />
             </StyledView>
 
             <StyledView className="flex justify-center mb-5 flex-row w-80 ml-14">
