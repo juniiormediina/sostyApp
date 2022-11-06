@@ -3,7 +3,7 @@ import {View, Text, Image, TextInput, TouchableOpacity, StyleSheet, Linking} fro
 import {styled} from 'nativewind';
 import Logo from './../../assets/Logo.png';
 import { ScrollView } from 'react-native';
-import { LinkingContext } from '@react-navigation/native';
+import { LinkingContext, useNavigation } from '@react-navigation/native';
 
 const StyledView = styled(View);
 const StyledText = styled(Text);
@@ -12,6 +12,7 @@ const StyledScroll = styled(ScrollView);
 
 
 export const CreateAccount = () => {
+    const navigation = useNavigation();
     const [user, setUser] = useState('');
     const [userAcceptance, setUserAcceptance] = useState('false');
   return (
@@ -104,7 +105,9 @@ export const CreateAccount = () => {
 
             <StyledView className='items-center'>
                 <StyledView className='w-80 mb-4' >
-                        <TouchableOpacity style={styles.button}>
+                        <TouchableOpacity style={styles.button} onPress={() =>
+            navigation.navigate('Login')
+          }>
                             <StyledText className="text-base" style={styles.greenText}>Cancelar</StyledText>
                         </TouchableOpacity>
                 </StyledView>

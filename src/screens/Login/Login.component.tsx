@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import {styled} from 'nativewind';
 import React from 'react';
 import {Button, Image, Text, TextInput, View} from 'react-native';
@@ -9,6 +10,7 @@ const StyledTextInput = styled(TextInput);
 const StyledButton = styled(Button);
 
 export const Login = () => {
+  const navigation = useNavigation();
   return (
     <StyledView className="w-full h-full flex justify-around items-center">
       <StyledView className="flex justify-center ">
@@ -35,7 +37,9 @@ export const Login = () => {
       <StyledView className="flex justify-center">
         <StyledView className="flex flex-row justify-between">
           <StyledText>Contraseña</StyledText>
-          <StyledText style={{color: '#00BD56'}}>
+          <StyledText style={{color: '#00BD56'}} onPress={() =>
+            navigation.navigate('ForgotPassword')
+          }>
             ¿Olvido su contraseña?
           </StyledText>
         </StyledView>
@@ -50,7 +54,9 @@ export const Login = () => {
       <StyledView className="flex justify-center w-80">
         <StyledView className="flex flex-row justify-between pb-4">
           <StyledText>¿Nuevo en Sosty?</StyledText>
-          <StyledText style={{color: '#00BD56'}}>
+          <StyledText style={{color: '#00BD56'}} onPress={() =>
+            navigation.navigate('CreateAccount')
+          }>
             Crea una cuenta aquí
           </StyledText>
         </StyledView>
