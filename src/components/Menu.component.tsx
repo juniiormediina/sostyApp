@@ -17,13 +17,13 @@ export const Menu = () => {
     <StyledView style={styles.menuBar} className="w-full flex justify-around items-center">
         <StyledView style={styles.menuBody} className='w-full h-full flex items-center flex-row justify-around bg-slate-500'>
                 
-                <Text onPress={()=>[setColorIconInv("#00BD56"),setColorIconSearch('#D3D3D3'),setColorIconQuestion('#D3D3D3'),setColorIconUser('#D3D3D3')]}>
+                <Text onPress={()=>[setColorIconInv("#00BD56"),setColorIconSearch('#D3D3D3'),setColorIconQuestion('#D3D3D3'),setColorIconUser('#D3D3D3'),navigation.navigate('Investments')]}>
                     <FontAwesomeIcon icon={faChartColumn} size={30} style={{ color: colorIconInv }} />
                 </Text>
                 <Text onPress={()=>[setColorIconInv("#D3D3D3"),setColorIconSearch('#00BD56'),setColorIconQuestion('#D3D3D3'),setColorIconUser('#D3D3D3')]}>
                 <FontAwesomeIcon icon={faSearch} size={30} style={{ color: colorIconSearch }} />
                 </Text>
-                <Text onPress={()=>[setColorIconInv("#D3D3D3"),setColorIconSearch('#D3D3D3'),setColorIconQuestion('#00BD56'),setColorIconUser('#D3D3D3')]}>
+                <Text onPress={()=>[setColorIconInv("#D3D3D3"),setColorIconSearch('#D3D3D3'),setColorIconQuestion('#00BD56'),setColorIconUser('#D3D3D3'),navigation.navigate('Help')]}>
                     <FontAwesomeIcon icon={faQuestionCircle} size={30} style={{ color: colorIconQuestion }} />
                 </Text>
                 <Text onPress={()=>[setColorIconInv("#D3D3D3"),setColorIconSearch('#D3D3D3'),setColorIconQuestion('#D3D3D3'),setColorIconUser('#00BD56')]}>
