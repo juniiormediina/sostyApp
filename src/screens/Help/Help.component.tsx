@@ -165,7 +165,7 @@ export const Help = () => {
             </StyledView>
 
         </StyledScroll>
-        <Menu></Menu>
+        <Menu activeRoute='help'></Menu>
       
 
       
