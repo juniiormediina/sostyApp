@@ -27,6 +27,13 @@ export const Help = () => {
         <StyledScroll className='w-full'>
             <StyledView className="w-full h-full flex justify-around items-center bg-gray-300">
 
+            <StyledView className="flex justify-center">
+                <Image
+                    source={Logo}
+                    style={{marginTop: 15, marginLeft: 45, marginBottom: 32}}
+                />
+            </StyledView>
+
 
                 <StyledView className="flex justify-center items-center w-80 p-5 rounded-xl bg-white m-5">
                     <StyledView className="w-full ">

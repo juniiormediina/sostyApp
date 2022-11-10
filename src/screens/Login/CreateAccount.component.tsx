@@ -20,6 +20,11 @@ const StyledScroll = styled(ScrollView);
 
 export const CreateAccount = () => {
   const navigation = useNavigation();
+  const [userEmail, setUserEmail] = useState('');
+  const [userPassword, setUserPassword] = useState('');
+  const [userName, setUserName] = useState('');
+  const [userLastname, setUserLastname] = useState('');
+  const [userPhone, setUserPhone] = useState('');
   const [user, setUser] = useState('');
   const [userAcceptance, setUserAcceptance] = useState('false');
   return (
@@ -43,6 +48,7 @@ export const CreateAccount = () => {
             placeholder="example@example.com"
             textContentType="emailAddress"
             className="w-80  border-2 border-gray-300 rounded-lg mb-9"
+            onChangeText={value => setUserEmail(value)}
           />
         </StyledView>
 
@@ -53,6 +59,7 @@ export const CreateAccount = () => {
             textContentType="password"
             secureTextEntry={true}
             className="w-80  border-2 border-gray-300 rounded-lg mb-9"
+            onChangeText={value => setUserPassword(value)}
           />
         </StyledView>
 
@@ -61,6 +68,7 @@ export const CreateAccount = () => {
           <StyledTextInput
             placeholder="Jhon"
             className="w-80  border-2 border-gray-300 rounded-lg mb-9"
+            onChangeText={value => setUserName(value)}
           />
         </StyledView>
 
@@ -69,6 +77,7 @@ export const CreateAccount = () => {
           <StyledTextInput
             placeholder="Smith"
             className="w-80  border-2 border-gray-300 rounded-lg mb-9"
+            onChangeText={value => setUserLastname(value)}
           />
         </StyledView>
 
@@ -78,6 +87,7 @@ export const CreateAccount = () => {
             placeholder="314 376 1024"
             keyboardType="numeric"
             className="w-80  border-2 border-gray-300 rounded-lg mb-9"
+            onChangeText={value => setUserPhone(value)}
           />
         </StyledView>
 
@@ -85,9 +95,9 @@ export const CreateAccount = () => {
           <TouchableOpacity
             style={styles.outterRadio}
             onPress={() =>
-              user == 'Investor' ? setUser('') : setUser('Investor')
+              user == 'Inversionista' ? setUser('') : setUser('Inversionista')
             }>
-            {user == 'Investor' && <View style={styles.innerRadio}></View>}
+            {user == 'Inversionista' && <View style={styles.innerRadio}></View>}
           </TouchableOpacity>
           <StyledText className="text-base w-80">
             Soy NeoGanadero - Quiero Invertir Dinero
@@ -98,9 +108,9 @@ export const CreateAccount = () => {
           <TouchableOpacity
             style={styles.outterRadio}
             onPress={() =>
-              user == 'Producer' ? setUser('') : setUser('Producer')
+              user == 'Productor' ? setUser('') : setUser('Productor')
             }>
-            {user == 'Producer' && <View style={styles.innerRadio}></View>}
+            {user == 'Productor' && <View style={styles.innerRadio}></View>}
           </TouchableOpacity>
           <StyledText className="text-base w-80">
             Soy Productor - Tengo Finca y Necesito Inversión
