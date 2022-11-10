@@ -22,9 +22,7 @@ export const Login = () => {
   const [passwordUser, setPassword] = useState('');
   const navigation = useNavigation();
   const getSostyToken = () => {
-    // fetch(url).
     console.log('Login');
-    // console.log(email)
     const requestOptions = {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
@@ -38,7 +36,6 @@ export const Login = () => {
       .then(res =>
         res.status == 200
           ? res.json().then(data => {
-              console.log(data.accessToken);
               if (data.accessToken) {
                 AsyncStorage.setItem('userData', JSON.stringify(data));
                 navigation.navigate('Investments');

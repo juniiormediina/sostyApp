@@ -32,7 +32,6 @@ const StyledTextInput = styled(TextInput);
 const StyledScroll = styled(ScrollView);
 const url = 'https://sosty-api.azurewebsites.net/api/Project/SearchProjects';
 let projects: any = [];
-// let showProjects : boolean = false;
 interface projectQueries {
   producerName?: any;
   projectName?: any;
@@ -68,15 +67,12 @@ export const SearchProyect = () => {
       res.status == 200
         ? res.json().then(data => {
             console.log(data);
-
             projects = data;
             setDataProjects(data);
             console.log(dataProject.length);
             if (dataProject.length != 0) {
               setShowProjects(true);
             }
-            // showProjects = true;
-
             console.log(dataProject[1]);
             console.log(data[1].projectName);
           })
@@ -124,7 +120,6 @@ export const SearchProyect = () => {
               className="w-80  border-2 border-gray-300 rounded-lg mb-9"
               onChangeText={value => setProducerName(value)}
               value={producerName}
-              // ref={ searchProducerInput}
             />
           </StyledView>
 
@@ -217,13 +212,6 @@ export const SearchProyect = () => {
           {dataProject.length != 0 && showProjects == true && (
             <StyledView className="flex justify-center items-center w-80 p-5 rounded-xl bg-white m-5">
               <StyledView className="w-full">
-                {/* <StyledView className="flex justify-center">
-                        {showProjects == true && <Image
-                            source={{uri:'https://sosty.blob.core.windows.net/sosty-public-files/20221109151204.jpeg'}}
-                            style={{marginTop: 15, marginLeft: 45, marginBottom: 32}}
-                        />}
-                        </StyledView> */}
-
                 {dataProject.length != 0 &&
                   showProjects == true && (
                     <StyledText
@@ -232,7 +220,8 @@ export const SearchProyect = () => {
                       className="text-xl mb-6 ">
                       {dataProject[1] && dataProject[1].projectName
                         ? dataProject[1].projectName
-                        : null + ' (' + dataProject[1] !== undefined && dataProject[1].projectCode
+                        : null + ' (' + dataProject[1] !== undefined &&
+                          dataProject[1].projectCode
                         ? dataProject[1].projectCode
                         : null + ')'}
                     </StyledText>
@@ -409,7 +398,6 @@ export const SearchProyect = () => {
                     display: 'flex',
                     flexDirection: 'row',
                   }}>
-                  {/* <FontAwesomeIcon icon={faCalendarDays} size={40} style={{ color: '#00BD56' , width:'30%', marginRight:10, marginTop:5}} /> */}
                   <StyledView>
                     {dataProject.length != 0 && showProjects == true && (
                       <StyledText
@@ -455,7 +443,6 @@ export const SearchProyect = () => {
                     display: 'flex',
                     flexDirection: 'row',
                   }}>
-                  {/* <FontAwesomeIcon icon={faCalendarDays} size={40} style={{ color: '#00BD56' , width:'30%', marginRight:10, marginTop:5}} /> */}
                   <StyledView>
                     {dataProject.length != 0 && showProjects == true && (
                       <StyledText
@@ -481,7 +468,7 @@ export const SearchProyect = () => {
                         font-medium
                         className="text-sm mb-6 ">
                         {'En caso de no completar el 100% se comprarán los ' +
-                        dataProject[1] && dataProject[1].amountOfCattles
+                          dataProject[1] && dataProject[1].amountOfCattles
                           ? dataProject[1].amountOfCattles
                           : null +
                             ' animales actuales y la rentabilidad puede variar un poco'}

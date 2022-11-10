@@ -36,10 +36,11 @@ export const Help = () => {
     false,
     false,
   ]);
-  //   const [aboutSosty, setAboutSosty]= useState(false)
+
   const [aboutNeoGanader, setAboutNeoGanader] = useState(false);
   const [aboutProducer, setAboutProducer] = useState(false);
   const [aboutProyect, setAboutProyect] = useState(false);
+
   return (
     <StyledView className="w-full h-full flex justify-around items-center">
       <StyledScroll className="w-full">
