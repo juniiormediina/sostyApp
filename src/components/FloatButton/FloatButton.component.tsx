@@ -3,7 +3,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 
 import {styled} from 'nativewind';
 import React from 'react';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {Linking, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
 const StyledView = styled(View);
 const StyledText = styled(Text);
@@ -12,7 +12,10 @@ export const FloatButton = () => {
   return (
     <StyledView style={styles.container}>
       <StyledView>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() =>
+            Linking.openURL('https://api.whatsapp.com/send?phone=573204357649')
+          }>
           <StyledText className="text-base ">
             <FontAwesomeIcon
               icon={faMessage}
