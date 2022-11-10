@@ -1,10 +1,14 @@
-import {faDollarSign} from '@fortawesome/free-solid-svg-icons';
+import {
+  faCloudArrowDown,
+  faDollarSign,
+} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useNavigation} from '@react-navigation/native';
 import {styled} from 'nativewind';
 import React, {useEffect} from 'react';
-import {ScrollView, Text, View} from 'react-native';
+import {ScrollView, StyleSheet, Text, View} from 'react-native';
+import {Row, Rows, Table} from 'react-native-table-component';
 import {FloatButton} from '../../components/FloatButton/FloatButton.component';
 import {Menu} from '../../components/Menu.component';
 
@@ -19,6 +23,27 @@ export default function Investments() {
   };
 
   useEffect(() => getUserData(), []);
+
+  const state = {
+    tableHead: [
+      'CÓDIGO',
+      'PROYECTO',
+      'PRODUCTOR',
+      'PROGRESO',
+      'FASE',
+      'PAGO CONFIRMADO',
+      'MONTO INVERTIDO',
+      'PORCENTAJE',
+      'PARTICIPACIÓN',
+      'FECHA DE INVERSIÓN',
+    ],
+    tableData: [
+      ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
+      ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
+      ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
+      ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
+    ],
+  };
 
   return (
     <>
@@ -42,7 +67,6 @@ export default function Investments() {
                 <StyledText>Total Invertido</StyledText>
               </StyledView>
             </StyledView>
-
             <StyledView className="w-80 h-28 p-5 m-5 rounded-lg bg-white flex flex-row justify-center items-center">
               <StyledView
                 className="bg-slate-500 p-3 rounded-full"
@@ -58,7 +82,6 @@ export default function Investments() {
                 <StyledText>Total Recibido</StyledText>
               </StyledView>
             </StyledView>
-
             <StyledView className="w-80 h-28 p-5 m-5 rounded-lg bg-white flex flex-row justify-center items-center">
               <StyledView
                 className="bg-slate-500 p-3 rounded-full"
@@ -80,7 +103,7 @@ export default function Investments() {
                 className="bg-slate-500 p-3 rounded-full"
                 style={{backgroundColor: '#e0f7ea'}}>
                 <FontAwesomeIcon
-                  icon={faDollarSign}
+                  icon={faCloudArrowDown}
                   size={30}
                   style={{color: '#00BD56'}}
                 />
@@ -92,6 +115,20 @@ export default function Investments() {
                 <StyledText>Saldo Sosty</StyledText>
               </StyledView>
             </StyledView>
+            <StyledView className="w-full">
+              <ScrollView horizontal={true}>
+                <View style={styles.container}>
+                  <Table borderStyle={{borderWidth: 2, borderColor: '#c8e1ff'}}>
+                    <Row
+                      data={state.tableHead}
+                      style={styles.head}
+                      textStyle={styles.text}
+                    />
+                    <Rows data={state.tableData} textStyle={styles.text} />
+                  </Table>
+                </View>
+              </ScrollView>
+            </StyledView>
           </StyledView>
         </StyledScroll>
         <FloatButton />
@@ -100,3 +137,9 @@ export default function Investments() {
     </>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {flex: 1, padding: 16, paddingTop: 30, backgroundColor: '#fff'},
+  head: {height: 40, backgroundColor: '#f1f8ff'},
+  text: {margin: 6},
+});
