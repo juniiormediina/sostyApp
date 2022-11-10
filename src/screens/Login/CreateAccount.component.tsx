@@ -2,6 +2,7 @@ import {useNavigation} from '@react-navigation/native';
 import {styled} from 'nativewind';
 import React, {useState} from 'react';
 import {
+  Alert,
   Image,
   Linking,
   ScrollView,
@@ -11,25 +12,74 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import { Menu } from '../../components/Menu.component';
 import Logo from './../../assets/Logo.png';
 
 const StyledView = styled(View);
 const StyledText = styled(Text);
 const StyledTextInput = styled(TextInput);
 const StyledScroll = styled(ScrollView);
+const url = 'https://sosty-api.azurewebsites.net/api/User/Register';
 
 export const CreateAccount = () => {
   const navigation = useNavigation();
+  const [userEmail, setUserEmail] = useState('');
+  const [userPassword, setUserPassword] = useState('');
+  const [userName, setUserName] = useState('');
+  const [userLastname, setUserLastname] = useState('');
+  const [userPhone, setUserPhone] = useState('');
   const [user, setUser] = useState('');
   const [userAcceptance, setUserAcceptance] = useState('false');
+
+  const registerUser = () => {
+    
+    const requestOptions = {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        email:userEmail,
+        password: userPassword,
+        userType: user,
+        firstName: userName,
+        lastName: userLastname,
+        phoneNumber:userPhone,
+        origin:"register"
+      }),
+    };
+
+    if (userAcceptance == 'true'){
+      fetch(url, requestOptions)
+        .then(res =>{
+          if(res.status == 200){
+            res.json().then(data => {
+              console.log(data.user);
+              if (data.user) {
+                Alert.alert('Registro Exitoso')
+                navigation.navigate('Login');
+              }
+            })
+          }
+          else if(res.status == 400){
+            Alert.alert('Datos incorrectos o faltantes')
+          }else{
+            Alert.alert('Ocurrion un error en el proceso de registro')
+          }
+        }
+          
+        )
+        .catch(e => console.log(e));
+
+    }else{
+      Alert.alert('Debe aceptar los terminos y condiciones para poder continuar')
+    }
+  };
   return (
     <StyledScroll>
       <StyledView className="w-full h-full flex justify-around bg-white">
         <StyledView className="flex justify-center">
           <Image
             source={Logo}
-            style={{marginTop: 15, marginLeft: 45, marginBottom: 32}}
-          />
+            style={{ marginTop: 15, marginLeft: 45, marginBottom: 32 }} />
           <StyledView className="flex justify-center items-center">
             <StyledText className="text-xl w-80 mb-8">
               Por favor, crea una cuenta con tu email y contraseña
@@ -43,7 +93,7 @@ export const CreateAccount = () => {
             placeholder="example@example.com"
             textContentType="emailAddress"
             className="w-80  border-2 border-gray-300 rounded-lg mb-9"
-          />
+            onChangeText={value => setUserEmail(value)} />
         </StyledView>
 
         <StyledView className="flex justify-center items-center">
@@ -53,7 +103,7 @@ export const CreateAccount = () => {
             textContentType="password"
             secureTextEntry={true}
             className="w-80  border-2 border-gray-300 rounded-lg mb-9"
-          />
+            onChangeText={value => setUserPassword(value)} />
         </StyledView>
 
         <StyledView className="flex justify-center items-center">
@@ -61,7 +111,7 @@ export const CreateAccount = () => {
           <StyledTextInput
             placeholder="Jhon"
             className="w-80  border-2 border-gray-300 rounded-lg mb-9"
-          />
+            onChangeText={value => setUserName(value)} />
         </StyledView>
 
         <StyledView className="flex justify-center items-center">
@@ -69,7 +119,7 @@ export const CreateAccount = () => {
           <StyledTextInput
             placeholder="Smith"
             className="w-80  border-2 border-gray-300 rounded-lg mb-9"
-          />
+            onChangeText={value => setUserLastname(value)} />
         </StyledView>
 
         <StyledView className="flex justify-center items-center">
@@ -78,16 +128,14 @@ export const CreateAccount = () => {
             placeholder="314 376 1024"
             keyboardType="numeric"
             className="w-80  border-2 border-gray-300 rounded-lg mb-9"
-          />
+            onChangeText={value => setUserPhone(value)} />
         </StyledView>
 
         <StyledView className="flex justify-center mb-5 flex-row w-80 ml-14">
           <TouchableOpacity
             style={styles.outterRadio}
-            onPress={() =>
-              user == 'Investor' ? setUser('') : setUser('Investor')
-            }>
-            {user == 'Investor' && <View style={styles.innerRadio}></View>}
+            onPress={() => user == 'Inversionista' ? setUser('') : setUser('Inversionista')}>
+            {user == 'Inversionista' && <View style={styles.innerRadio}></View>}
           </TouchableOpacity>
           <StyledText className="text-base w-80">
             Soy NeoGanadero - Quiero Invertir Dinero
@@ -97,10 +145,8 @@ export const CreateAccount = () => {
         <StyledView className="flex justify-center  mb-5 flex-row w-80 ml-14">
           <TouchableOpacity
             style={styles.outterRadio}
-            onPress={() =>
-              user == 'Producer' ? setUser('') : setUser('Producer')
-            }>
-            {user == 'Producer' && <View style={styles.innerRadio}></View>}
+            onPress={() => user == 'Productor' ? setUser('') : setUser('Productor')}>
+            {user == 'Productor' && <View style={styles.innerRadio}></View>}
           </TouchableOpacity>
           <StyledText className="text-base w-80">
             Soy Productor - Tengo Finca y Necesito Inversión
@@ -110,11 +156,9 @@ export const CreateAccount = () => {
         <StyledView className="flex justify-center mb-5 flex-row w-80 ml-14">
           <TouchableOpacity
             style={styles.outterCB}
-            onPress={() =>
-              userAcceptance == 'false'
-                ? setUserAcceptance('true')
-                : setUserAcceptance('false')
-            }>
+            onPress={() => userAcceptance == 'false'
+              ? setUserAcceptance('true')
+              : setUserAcceptance('false')}>
             {userAcceptance == 'true' && <View style={styles.innerCB}></View>}
           </TouchableOpacity>
           <StyledText className="text-base w-80">
@@ -138,7 +182,7 @@ export const CreateAccount = () => {
           <StyledView className="w-80 mb-4">
             <TouchableOpacity
               style={styles.primaryButton}
-              disabled={user == '' || userAcceptance != 'true'}>
+              onPress={()=>registerUser()}>
               <StyledText className="text-base" style={styles.registerText}>
                 Registrarme
               </StyledText>
