@@ -4,7 +4,6 @@ import {styled} from 'nativewind';
 import React, {useEffect, useState} from 'react';
 import {
   Alert,
-  Button,
   Image,
   ScrollView,
   StyleSheet,
@@ -19,7 +18,6 @@ import Logo from './../../assets/Logo.png';
 const StyledView = styled(View);
 const StyledText = styled(Text);
 const StyledTextInput = styled(TextInput);
-const StyledButton = styled(Button);
 const StyledScroll = styled(ScrollView);
 const url = 'https://sosty-api.azurewebsites.net/api/User/GetProfileDetails';
 
@@ -30,9 +28,6 @@ export const User = () => {
   const [birthData, setBirthDate] = useState('');
   const [docType, setDocType] = useState('');
   const [docNumber, setDocNumber] = useState('');
-  const [userDataStorage, setUserDataStorage] = useState({});
-  const [userId, setuserId] = useState('');
-  const [userType, setuserType] = useState('');
 
   const getUserData = () => {
     AsyncStorage.getItem('userData').then(res => {

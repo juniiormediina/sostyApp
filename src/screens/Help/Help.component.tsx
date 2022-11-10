@@ -4,13 +4,11 @@ import {useNavigation} from '@react-navigation/native';
 import {styled} from 'nativewind';
 import React, {useState} from 'react';
 import {
-  Button,
   Image,
   Linking,
   ScrollView,
   StyleSheet,
   Text,
-  TextInput,
   TouchableOpacity,
   View,
 } from 'react-native';
@@ -22,8 +20,6 @@ import {Separator} from '../../components/Separator';
 
 const StyledView = styled(View);
 const StyledText = styled(Text);
-const StyledTextInput = styled(TextInput);
-const StyledButton = styled(Button);
 const StyledScroll = styled(ScrollView);
 
 export const Help = () => {
