@@ -30,7 +30,7 @@ export const Menu = (props: MenuProps) => {
   return (
     <StyledView
       style={styles.menuBar}
-      className="w-full flex justify-around items-center">
+      className="w-full flex justify-around items-center bg-gray-300">
       <StyledView
         style={styles.menuBody}
         className="w-full h-full flex items-center flex-row justify-around bg-slate-500">

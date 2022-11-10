@@ -98,7 +98,7 @@ export const SearchProyect = () => {
   };
 
   return (
-    <StyledView className="w-full h-full flex justify-around items-center">
+    <StyledView className="w-full h-full bg-gray-300 flex justify-around items-center">
       <StyledScroll className="w-full">
         <StyledView className="w-full h-full flex justify-around items-center ">
           <StyledView className="flex justify-center">
@@ -117,7 +117,7 @@ export const SearchProyect = () => {
             <StyledTextInput
               placeholder="Digite el nombre del productor"
               textContentType="name"
-              className="w-80  border-2 border-gray-300 rounded-lg mb-9"
+              className="w-80  border-2 border-gray-500 rounded-lg mb-9"
               onChangeText={value => setProducerName(value)}
               value={producerName}
             />
@@ -132,7 +132,7 @@ export const SearchProyect = () => {
             <StyledTextInput
               placeholder="Digite el nombre del proyecto"
               textContentType="name"
-              className="w-80  border-2 border-gray-300 rounded-lg mb-9"
+              className="w-80  border-2 border-gray-500 rounded-lg mb-9"
               onChangeText={value => setProjectName(value)}
               value={projectName}
             />
@@ -147,7 +147,7 @@ export const SearchProyect = () => {
             <StyledTextInput
               placeholder="Digite el nombre del departamento"
               textContentType="name"
-              className="w-80  border-2 border-gray-300 rounded-lg mb-9"
+              className="w-80  border-2 border-gray-500 rounded-lg mb-9"
               onChangeText={value => setDepartmentName(value)}
               value={departmentName}
             />
@@ -162,7 +162,7 @@ export const SearchProyect = () => {
             <StyledTextInput
               placeholder="Digite el nombre del municipio/ciudad"
               textContentType="name"
-              className="w-80  border-2 border-gray-300 rounded-lg mb-9"
+              className="w-80  border-2 border-gray-500 rounded-lg mb-9"
               onChangeText={value => setCityName(value)}
               value={cityName}
             />

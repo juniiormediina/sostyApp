@@ -21,6 +21,7 @@ export const Login = () => {
   const [emailUSer, setEmail] = useState('');
   const [passwordUser, setPassword] = useState('');
   const navigation = useNavigation();
+
   const getSostyToken = () => {
     console.log('Login');
     const requestOptions = {

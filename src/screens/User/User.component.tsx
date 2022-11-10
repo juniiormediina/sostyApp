@@ -4,7 +4,6 @@ import {styled} from 'nativewind';
 import React, {useEffect, useState} from 'react';
 import {
   Alert,
-  Button,
   Image,
   ScrollView,
   StyleSheet,
@@ -19,7 +18,6 @@ import Logo from './../../assets/Logo.png';
 const StyledView = styled(View);
 const StyledText = styled(Text);
 const StyledTextInput = styled(TextInput);
-const StyledButton = styled(Button);
 const StyledScroll = styled(ScrollView);
 const url = 'https://sosty-api.azurewebsites.net/api/User/GetProfileDetails';
 
@@ -30,9 +28,6 @@ export const User = () => {
   const [birthData, setBirthDate] = useState('');
   const [docType, setDocType] = useState('');
   const [docNumber, setDocNumber] = useState('');
-  const [userDataStorage, setUserDataStorage] = useState({});
-  const [userId, setuserId] = useState('');
-  const [userType, setuserType] = useState('');
 
   const getUserData = () => {
     AsyncStorage.getItem('userData').then(res => {
@@ -66,7 +61,7 @@ export const User = () => {
     navigation.navigate('Login');
   };
   return (
-    <StyledView className="w-full h-full flex justify-around items-center">
+    <StyledView className="w-full h-full bg-gray-300 flex justify-around items-center">
       <StyledScroll className="w-full">
         <StyledView className="w-full h-full flex justify-around items-center ">
           <StyledView className="flex justify-center">
@@ -81,7 +76,7 @@ export const User = () => {
             <StyledTextInput
               placeholder="Jhon"
               value={userName}
-              className="w-80  border-2 border-gray-300 rounded-lg mb-9"
+              className="w-80  border-2 border-gray-500 rounded-lg mb-9"
               onChangeText={value => setUserName(value)}
             />
           </StyledView>
@@ -91,7 +86,7 @@ export const User = () => {
             <StyledTextInput
               placeholder="Doe"
               value={userLastName}
-              className="w-80  border-2 border-gray-300 rounded-lg mb-9"
+              className="w-80  border-2 border-gray-500 rounded-lg mb-9"
               onChangeText={value => setUserLastName(value)}
             />
           </StyledView>
@@ -103,7 +98,7 @@ export const User = () => {
             <StyledTextInput
               placeholder="20/10/1999"
               value={birthData}
-              className="w-80  border-2 border-gray-300 rounded-lg mb-9"
+              className="w-80  border-2 border-gray-500 rounded-lg mb-9"
               onChangeText={value => setBirthDate(value)}
             />
           </StyledView>
@@ -115,7 +110,7 @@ export const User = () => {
             <StyledTextInput
               placeholder="CC"
               value={docType}
-              className="w-80  border-2 border-gray-300 rounded-lg mb-9"
+              className="w-80  border-2 border-gray-500 rounded-lg mb-9"
               onChangeText={value => setDocType(value)}
             />
           </StyledView>
@@ -127,7 +122,7 @@ export const User = () => {
             <StyledTextInput
               placeholder="12345678"
               value={docNumber}
-              className="w-80  border-2 border-gray-300 rounded-lg mb-9"
+              className="w-80  border-2 border-gray-500 rounded-lg mb-9"
               onChangeText={value => setDocNumber(value)}
             />
           </StyledView>
