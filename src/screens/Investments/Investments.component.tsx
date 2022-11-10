@@ -21,7 +21,7 @@ export default function Investments() {
 
   return (
     <>
-      <StyledView className="w-full bg-gray-300 flex justify-around items-center">
+      <StyledView className="w-full h-full bg-gray-300 flex justify-around items-center">
         <StyledView className="w-80 h-28 rousnded-lg bg-white flex flex-row justify-center items-center">
           <StyledView
             className="bg-slate-500 p-3 rounded-full"
@@ -82,9 +82,9 @@ export default function Investments() {
             <StyledText>Saldo Sosty</StyledText>
           </StyledView>
         </StyledView>
+        <FloatButton />
+        <Menu activeRoute="investment"></Menu>
       </StyledView>
-      <FloatButton />
-      <Menu activeRoute="investment"></Menu>
     </>
   );
 }

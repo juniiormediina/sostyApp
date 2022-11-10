@@ -71,6 +71,9 @@ const styles = StyleSheet.create({
   menuBar: {
     height: 86,
     maxHeight: 86,
+    position: 'absolute',
+    bottom: 0,
+    zIndex: 1000,
   },
   menuBody: {
     borderTopLeftRadius: 22,
