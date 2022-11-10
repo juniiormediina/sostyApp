@@ -1,6 +1,6 @@
+import React from 'react';
 import {Text, TouchableOpacity} from 'react-native';
 import {PrimaryButtonStyle, SecondaryButtonStyle} from './BaseStyles';
-import React from 'react';
 
 interface ButtonProps {
   onPress?: any;

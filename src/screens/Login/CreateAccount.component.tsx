@@ -1,17 +1,17 @@
+import {useNavigation} from '@react-navigation/native';
+import {styled} from 'nativewind';
 import React, {useState} from 'react';
 import {
-  View,
-  Text,
   Image,
+  Linking,
+  ScrollView,
+  StyleSheet,
+  Text,
   TextInput,
   TouchableOpacity,
-  StyleSheet,
-  Linking,
+  View,
 } from 'react-native';
-import {styled} from 'nativewind';
 import Logo from './../../assets/Logo.png';
-import {ScrollView} from 'react-native';
-import {LinkingContext, useNavigation} from '@react-navigation/native';
 
 const StyledView = styled(View);
 const StyledText = styled(Text);
