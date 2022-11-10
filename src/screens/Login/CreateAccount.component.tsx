@@ -276,4 +276,3 @@ const styles = StyleSheet.create({
     color: '#00BD56',
   },
 });
-// https://fonts.google.com/specimen/Montserrat

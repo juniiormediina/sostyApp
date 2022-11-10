@@ -21,7 +21,6 @@ export const Routes = () => {
         <Stack.Screen name="SearchProyect" component={SearchProyect} />
         <Stack.Screen name="Help" component={Help} />
         <Stack.Screen name="User" component={User} />
-        {/* <Stack.Screen name="Menu" component={Menu} /> */}
       </Stack.Navigator>
     </NavigationContainer>
   );
