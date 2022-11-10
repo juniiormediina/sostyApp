@@ -16,6 +16,7 @@ import {
 } from 'react-native';
 import Logo from '../../assets/Logo.png';
 import {TextStyle01} from '../../components/BaseStyles';
+import {FloatButton} from '../../components/FloatButton/FloatButton.component';
 import {Menu} from '../../components/Menu.component';
 import {Separator} from '../../components/Separator';
 
@@ -434,6 +435,7 @@ export const Help = () => {
           </StyledView>
         </StyledView>
       </StyledScroll>
+      <FloatButton />
       <Menu activeRoute="help"></Menu>
     </StyledView>
   );

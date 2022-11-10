@@ -25,7 +25,7 @@ export default function Investments() {
 
   useEffect(() => getUserData(), []);
 
-  const state = {
+  const currentInv = {
     tableHead: [
       'CÓDIGO',
       'PROYECTO',
@@ -43,6 +43,26 @@ export default function Investments() {
       ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
       ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
       ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
+    ],
+  };
+
+  const FinalInv = {
+    tableHead: [
+      'CÓDIGO',
+      'PROYECTO',
+      'PRODUCTOR',
+      'FASE',
+      'PAGO CONFIRMADO',
+      'MONTO INVERTIDO',
+      'TOTAL RECIBIDO',
+      'TOTAL GANADO',
+      'FECHA DE INVERSIÓN',
+    ],
+    tableData: [
+      ['1', '2', '3', '4', '5', '6', '7', '8', '9'],
+      ['1', '2', '3', '4', '5', '6', '7', '8', '9'],
+      ['1', '2', '3', '4', '5', '6', '7', '8', '9'],
+      ['1', '2', '3', '4', '5', '6', '7', '8', '9'],
     ],
   };
 
@@ -125,16 +145,38 @@ export default function Investments() {
                 <StyledText>Saldo Sosty</StyledText>
               </StyledView>
             </StyledView>
-            <StyledView className="w-full">
+
+            <StyledView className="w-full bg-white mb-5">
+              <StyledText className="text-xl pl-4">
+                Inversiones Actuales
+              </StyledText>
               <ScrollView horizontal={true}>
                 <View style={styles.container}>
                   <Table borderStyle={{borderWidth: 2, borderColor: '#c8e1ff'}}>
                     <Row
-                      data={state.tableHead}
+                      data={currentInv.tableHead}
                       style={styles.head}
                       textStyle={styles.text}
                     />
-                    <Rows data={state.tableData} textStyle={styles.text} />
+                    <Rows data={currentInv.tableData} textStyle={styles.text} />
+                  </Table>
+                </View>
+              </ScrollView>
+            </StyledView>
+
+            <StyledView className="w-full bg-white mb-5">
+              <StyledText className="text-xl pl-4">
+                Inversiones Finalizadas
+              </StyledText>
+              <ScrollView horizontal={true}>
+                <View style={styles.container}>
+                  <Table borderStyle={{borderWidth: 2, borderColor: '#c8e1ff'}}>
+                    <Row
+                      data={FinalInv.tableHead}
+                      style={styles.head}
+                      textStyle={styles.text}
+                    />
+                    <Rows data={FinalInv.tableData} textStyle={styles.text} />
                   </Table>
                 </View>
               </ScrollView>
