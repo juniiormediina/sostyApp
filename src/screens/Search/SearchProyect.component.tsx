@@ -230,9 +230,9 @@ export const SearchProyect = () => {
                       style={{...TextStyle01.text, color: '#00BD56'}}
                       font-medium
                       className="text-xl mb-6 ">
-                      {dataProject[1].projectName
+                      {dataProject[1] && dataProject[1].projectName
                         ? dataProject[1].projectName
-                        : null + ' (' + dataProject[1].projectCode
+                        : null + ' (' + dataProject[1] !== undefined && dataProject[1].projectCode
                         ? dataProject[1].projectCode
                         : null + ')'}
                     </StyledText>
@@ -241,7 +241,7 @@ export const SearchProyect = () => {
                       style={{...TextStyle01.text, color: '#00BD56'}}
                       font-medium
                       className="text-xl mb-6 ">
-                      {dataProject[1].projectCode
+                      {dataProject[1] && dataProject[1].projectCode
                         ? dataProject[1].projectCode
                         : null}
                     </StyledText>
@@ -269,7 +269,7 @@ export const SearchProyect = () => {
                         style={{...TextStyle01.text, color: '#00BD56'}}
                         font-medium
                         className="text-xl  ">
-                        {dataProject[1].projectProfitability
+                        {dataProject[1] && dataProject[1].projectProfitability
                           ? dataProject[1].projectProfitability
                           : null + ' %(E.A)'}
                       </StyledText>
@@ -309,7 +309,7 @@ export const SearchProyect = () => {
                         style={{...TextStyle01.text, color: '#00BD56'}}
                         font-medium
                         className="text-xl  ">
-                        {dataProject[1].amountOfInvestors
+                        {dataProject[1] && dataProject[1].amountOfInvestors
                           ? dataProject[1].amountOfInvestors
                           : null}
                       </StyledText>
@@ -385,7 +385,7 @@ export const SearchProyect = () => {
                         style={{...TextStyle01.text, color: '#00BD56'}}
                         font-medium
                         className="text-xl  ">
-                        {dataProject[1].daysLeft
+                        {dataProject[1] && dataProject[1].daysLeft
                           ? dataProject[1].daysLeft
                           : null + ' dias'}
                       </StyledText>
@@ -420,7 +420,7 @@ export const SearchProyect = () => {
                         }}
                         font-medium
                         className="text-xl  ">
-                        {dataProject[1].finalKilogramPrice
+                        {dataProject[1] && dataProject[1].finalKilogramPrice
                           ? dataProject[1].finalKilogramPrice
                           : null + ' (' + dataProject[1].investmentCollected
                           ? dataProject[1].investmentCollected
@@ -436,7 +436,7 @@ export const SearchProyect = () => {
                         }}
                         font-medium
                         className="text-sm mb-6 ">
-                        {dataProject[1].amountOfCattles
+                        {dataProject[1] && dataProject[1].amountOfCattles
                           ? dataProject[1].amountOfCattles
                           : null +
                             ' Animales (' +
@@ -466,7 +466,7 @@ export const SearchProyect = () => {
                         }}
                         font-medium
                         className="text-xl  ">
-                        {dataProject[1].projectProgres
+                        {dataProject[1] && dataProject[1].projectProgres
                           ? dataProject[1].projectProgres
                           : null + ' % Recaudado'}
                       </StyledText>
@@ -481,7 +481,7 @@ export const SearchProyect = () => {
                         font-medium
                         className="text-sm mb-6 ">
                         {'En caso de no completar el 100% se comprarán los ' +
-                        dataProject[1].amountOfCattles
+                        dataProject[1] && dataProject[1].amountOfCattles
                           ? dataProject[1].amountOfCattles
                           : null +
                             ' animales actuales y la rentabilidad puede variar un poco'}
