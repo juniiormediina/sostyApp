@@ -169,15 +169,15 @@ export const SearchProyect = () => {
                         />}
                         </StyledView> */}
 
-                            { dataProject.length != 0 && showProjects == true && <StyledText style={{...TextStyle01.text, color:'#00BD56'}} font-medium className="text-xl mb-6 ">{dataProject[1].projectName ? dataProject[1].projectName :  null+ ' (' + dataProject[1].projectCode ? dataProject[1].projectCode : null + ')'}
+                            { dataProject.length != 0 && showProjects == true && <StyledText style={{...TextStyle01.text, color:'#00BD56'}} font-medium className="text-xl mb-6 ">{dataProject[1] && dataProject[1].projectName ? dataProject[1].projectName :  null+ ' (' + dataProject[1] !== undefined && dataProject[1].projectCode ? dataProject[1].projectCode : null + ')'}
                             </StyledText> &&
-                            <StyledText style={{...TextStyle01.text, color:'#00BD56'}} font-medium className="text-xl mb-6 ">{dataProject[1].projectCode ? dataProject[1].projectCode : null}
+                            <StyledText style={{...TextStyle01.text, color:'#00BD56'}} font-medium className="text-xl mb-6 ">{dataProject[1] && dataProject[1].projectCode ? dataProject[1].projectCode : null}
                             </StyledText>}
 
                             <StyledView style={{justifyContent: 'flex-start',display: 'flex',flexDirection: 'row'}}>
                             <FontAwesomeIcon icon={faChartSimple} size={40} style={{ color: '#00BD56' , width:'30%', marginRight:10, marginTop:5}} />
                             <StyledView >
-                                {dataProject.length != 0 && showProjects == true && <StyledText style={{...TextStyle01.text, color:'#00BD56'}} font-medium className="text-xl  ">{dataProject[1].projectProfitability ? dataProject[1].projectProfitability : null + ' %(E.A)'}
+                                {dataProject.length != 0 && showProjects == true && <StyledText style={{...TextStyle01.text, color:'#00BD56'}} font-medium className="text-xl  ">{dataProject[1] && dataProject[1].projectProfitability ? dataProject[1].projectProfitability : null + ' %(E.A)'}
                                 </StyledText>}
                                 <StyledText style={{...TextStyle01.text, color:'#00BD56', fontSize:15}} font-medium className="text-sm mb-6 ">Rentabilidad Estimada*
                                 </StyledText>
@@ -187,7 +187,7 @@ export const SearchProyect = () => {
                             <StyledView style={{justifyContent: 'flex-start',display: 'flex',flexDirection: 'row'}}>
                             <FontAwesomeIcon icon={faUsers} size={40} style={{ color: '#00BD56' , width:'30%', marginRight:10, marginTop:5}} />
                             <StyledView >
-                                {dataProject.length != 0 && showProjects == true && <StyledText style={{...TextStyle01.text, color:'#00BD56'}} font-medium className="text-xl  ">{dataProject[1].amountOfInvestors ? dataProject[1].amountOfInvestors: null}
+                                {dataProject.length != 0 && showProjects == true && <StyledText style={{...TextStyle01.text, color:'#00BD56'}} font-medium className="text-xl  ">{dataProject[1] && dataProject[1].amountOfInvestors ? dataProject[1].amountOfInvestors: null}
                                 </StyledText>}
                                 <StyledText style={{...TextStyle01.text, color:'#00BD56', fontSize:15}} font-medium className="text-sm mb-6 ">NeoGanaderos
                                 </StyledText>
@@ -207,7 +207,7 @@ export const SearchProyect = () => {
                             <StyledView style={{justifyContent: 'flex-start',display: 'flex',flexDirection: 'row'}}>
                             <FontAwesomeIcon icon={faCalendarDays} size={40} style={{ color: '#00BD56' , width:'30%', marginRight:10, marginTop:5}} />
                             <StyledView >
-                                {dataProject.length != 0 && showProjects == true && <StyledText style={{...TextStyle01.text, color:'#00BD56'}} font-medium className="text-xl  ">{dataProject[1].daysLeft ? dataProject[1].daysLeft: null + ' dias'}
+                                {dataProject.length != 0 && showProjects == true && <StyledText style={{...TextStyle01.text, color:'#00BD56'}} font-medium className="text-xl  ">{dataProject[1] && dataProject[1].daysLeft ? dataProject[1].daysLeft: null + ' dias'}
                                 </StyledText>}
                                 <StyledText style={{...TextStyle01.text, color:'#00BD56', fontSize:15}} font-medium className="text-sm mb-6 ">Restantes
                                 </StyledText>
@@ -217,9 +217,9 @@ export const SearchProyect = () => {
                             <StyledView style={{justifyContent: 'flex-start',display: 'flex',flexDirection: 'row'}}>
                             {/* <FontAwesomeIcon icon={faCalendarDays} size={40} style={{ color: '#00BD56' , width:'30%', marginRight:10, marginTop:5}} /> */}
                             <StyledView >
-                                {dataProject.length != 0 && showProjects == true && <StyledText style={{...TextStyle01.text, color:'#00BD56', fontSize:15}} font-medium className="text-xl  ">{dataProject[1].finalKilogramPrice ? dataProject[1].finalKilogramPrice: null + ' ('+dataProject[1].investmentCollected ? dataProject[1].investmentCollected : null+' Kg)'}
+                                {dataProject.length != 0 && showProjects == true && <StyledText style={{...TextStyle01.text, color:'#00BD56', fontSize:15}} font-medium className="text-xl  ">{dataProject[1] && dataProject[1].finalKilogramPrice ? dataProject[1].finalKilogramPrice: null + ' ('+dataProject[1].investmentCollected ? dataProject[1].investmentCollected : null+' Kg)'}
                                 </StyledText>}
-                                {dataProject.length != 0 && showProjects == true && <StyledText style={{...TextStyle01.text, color:'#00BD56', fontSize:15}} font-medium className="text-sm mb-6 ">{dataProject[1].amountOfCattles ? dataProject[1].amountOfCattles: null+ ' Animales ('+dataProject[1].investmentRequired ? dataProject[1].investmentRequired: null+' Kg)'}
+                                {dataProject.length != 0 && showProjects == true && <StyledText style={{...TextStyle01.text, color:'#00BD56', fontSize:15}} font-medium className="text-sm mb-6 ">{dataProject[1] && dataProject[1].amountOfCattles ? dataProject[1].amountOfCattles: null+ ' Animales ('+dataProject[1].investmentRequired ? dataProject[1].investmentRequired: null+' Kg)'}
                                 </StyledText>}
                             </StyledView>
                             </StyledView>
@@ -228,9 +228,9 @@ export const SearchProyect = () => {
                             <StyledView style={{justifyContent: 'flex-start',display: 'flex',flexDirection: 'row'}}>
                             {/* <FontAwesomeIcon icon={faCalendarDays} size={40} style={{ color: '#00BD56' , width:'30%', marginRight:10, marginTop:5}} /> */}
                             <StyledView >
-                                {dataProject.length != 0 && showProjects == true && <StyledText style={{...TextStyle01.text, color:'#00BD56', fontSize:15}} font-medium className="text-xl  ">{dataProject[1].projectProgres ? dataProject[1].projectProgres : null + ' % Recaudado'}
+                                {dataProject.length != 0 && showProjects == true && <StyledText style={{...TextStyle01.text, color:'#00BD56', fontSize:15}} font-medium className="text-xl  ">{dataProject[1] && dataProject[1].projectProgres ? dataProject[1].projectProgres : null + ' % Recaudado'}
                                 </StyledText>}
-                                {dataProject.length != 0 && showProjects == true && <StyledText style={{...TextStyle01.text, color:'orange', fontSize:15}} font-medium className="text-sm mb-6 ">{'En caso de no completar el 100% se comprarán los ' + dataProject[1].amountOfCattles ? dataProject[1].amountOfCattles : null + ' animales actuales y la rentabilidad puede variar un poco'}
+                                {dataProject.length != 0 && showProjects == true && <StyledText style={{...TextStyle01.text, color:'orange', fontSize:15}} font-medium className="text-sm mb-6 ">{'En caso de no completar el 100% se comprarán los ' + dataProject[1] && dataProject[1].amountOfCattles ? dataProject[1].amountOfCattles : null + ' animales actuales y la rentabilidad puede variar un poco'}
                                 </StyledText>}
                             </StyledView>
                             </StyledView>
