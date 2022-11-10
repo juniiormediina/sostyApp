@@ -1,14 +1,14 @@
 import {styled} from 'nativewind';
+import React from 'react';
 import {Image, Text, TextInput, View} from 'react-native';
 import Logo from '../../assets/Logo.png';
-import React from 'react';
-import {CustomButton} from '../../components/CustomButton';
 import {
   InputStyle01,
   TextStyle01,
   TextStyle02,
   TextStyle03,
 } from '../../components/BaseStyles';
+import {CustomButton} from '../../components/CustomButton';
 
 const StyledView = styled(View);
 const StyledText = styled(Text);

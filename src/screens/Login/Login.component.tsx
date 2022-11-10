@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useNavigation} from '@react-navigation/native';
 import {styled} from 'nativewind';
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {Alert, Button, Image, Text, TextInput, View} from 'react-native';
 import Logo from '../../assets/Logo.png';
 
@@ -9,41 +9,44 @@ const StyledView = styled(View);
 const StyledText = styled(Text);
 const StyledTextInput = styled(TextInput);
 const StyledButton = styled(Button);
-const url = "https://sosty-api.azurewebsites.net/api/User/Login"
+const url = 'https://sosty-api.azurewebsites.net/api/User/Login';
 
 const userData = {
   email: '',
-  password: ''
-}
+  password: '',
+};
 
 export const Login = () => {
   const [emailUSer, setEmail] = useState('');
   const [passwordUser, setPassword] = useState('');
   const navigation = useNavigation();
-  const getSostyToken = () =>{
+  const getSostyToken = () => {
     // fetch(url).
-    console.log("Login")
+    console.log('Login');
     // console.log(email)
     const requestOptions = {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
         email: emailUSer,
-        password: passwordUser
-      })
-    }
-    
-    fetch(url, requestOptions).then(res => res.status == 200 ? 
-      res.json().then(
-      data =>{
-        console.log(data.accessToken)
-        if (data.accessToken){
-          AsyncStorage.setItem("userData", JSON.stringify(data))
-          navigation.navigate("Investments")
-        }
-      }
-    ): Alert.alert('Email o contraseña incorrectos')).catch(e => console.log(e));
-  }
+        password: passwordUser,
+      }),
+    };
+
+    fetch(url, requestOptions)
+      .then(res =>
+        res.status == 200
+          ? res.json().then(data => {
+              console.log(data.accessToken);
+              if (data.accessToken) {
+                AsyncStorage.setItem('userData', JSON.stringify(data));
+                navigation.navigate('Investments');
+              }
+            })
+          : Alert.alert('Email o contraseña incorrectos'),
+      )
+      .catch(e => console.log(e));
+  };
   return (
     <StyledView className="w-full h-full flex justify-around items-center">
       <StyledView className="flex justify-center ">
@@ -64,7 +67,7 @@ export const Login = () => {
         <StyledTextInput
           className="border-2 border-gray-300 rounded-lg w-80 "
           placeholder="email@example.com"
-          onChangeText={(value)=>setEmail(value)}
+          onChangeText={value => setEmail(value)}
         />
       </StyledView>
 
@@ -82,7 +85,7 @@ export const Login = () => {
           textContentType="password"
           placeholder="********"
           secureTextEntry={true}
-          onChangeText={(value)=>setPassword(value)}
+          onChangeText={value => setPassword(value)}
         />
       </StyledView>
 
@@ -99,7 +102,7 @@ export const Login = () => {
           color="#00BD56"
           className="rounded-lg w-80 "
           title={'Ingresar'}
-          onPress={()=>getSostyToken()}></StyledButton>
+          onPress={() => getSostyToken()}></StyledButton>
       </StyledView>
     </StyledView>
   );

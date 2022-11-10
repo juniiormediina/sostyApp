@@ -1,4 +1,4 @@
-import { faSearch, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faCalendarDays, faChartSimple, faDollarSign, faSearch, faUsers, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { useNavigation } from "@react-navigation/native";
 import { styled } from "nativewind";
@@ -6,6 +6,7 @@ import React, { useEffect, useState } from "react";
 import { Alert, Image, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { TextStyle01 } from "../../components/BaseStyles";
 import { Menu } from "../../components/Menu.component";
+import { Separator } from "../../components/Separator";
 import Logo from './../../assets/Logo.png';
 
 const StyledView = styled(View);
@@ -23,28 +24,7 @@ interface projectQueries{
     
 }
 
-const getProjects = (queris ? : projectQueries, showProjects ?: boolean) =>{
-    showProjects = false
-    console.log(showProjects)
-    
-    const finalUrl = url +'?state='+queris?.departmentName+'&city='+queris?.cityName+'&producer='+queris?.producerName+'&project='+queris?.projectName
-    fetch(finalUrl).then(res =>{
-        res.status == 200 ? res.json().then(data => {
-            console.log(data);
 
-            projects = data;
-            showProjects = true;
-
-            console.log(projects[0].projectName)
-            console.log(showProjects)
-            
-        }) :
-        Alert.alert('Hubo un error obteniedo los proyectos, por favor recarga la pagina')
-        
-    })
-    
-    console.log(finalUrl)
-}
 
 
 
@@ -56,13 +36,45 @@ export const SearchProyect = () => {
     const [departmentName, setDepartmentName]= useState('')
     const [cityName, setCityName]= useState('')
     const [showProjects, setShowProjects]= useState(false)
-    useEffect(() => getProjects({producerName,projectName,departmentName,cityName}, showProjects))
-    const [sp, setSP]= useState(false)
+    const [dataProject, setDataProjects]= useState([])
+
+    const getProjects = (queris ? : projectQueries) =>{
+        setShowProjects(false)
+        setDataProjects([])
+        
+        
+        const finalUrl = url +'?state='+queris?.departmentName+'&city='+queris?.cityName+'&producer='+queris?.producerName+'&project='+queris?.projectName
+        fetch(finalUrl).then(res =>{
+            res.status == 200 ? res.json().then(data => {
+                console.log(data);
+    
+                projects = data;
+                setDataProjects(data)
+                console.log(dataProject.length)
+                if(dataProject.length!=0){
+                    setShowProjects(true)
+                }
+                // showProjects = true;
+    
+                console.log(dataProject[1])
+                console.log(data[1].projectName)
+                
+            }) :
+            Alert.alert('Hubo un error obteniedo los proyectos, por favor recarga la pagina')
+            
+        })
+        
+        console.log(finalUrl)
+    }
+
+    useEffect(() => getProjects({producerName,projectName,departmentName,cityName}),[])
+    
     const clearData = () =>{
         setProducerName('');
         setProjectName('');
         setDepartmentName('');
         setCityName('');
+        getProjects({producerName,projectName,departmentName,cityName})
     }
 
     return (
@@ -126,7 +138,7 @@ export const SearchProyect = () => {
                         <StyledView className="w-80 mb-4">
                             <TouchableOpacity
                             style={styles.primaryButton}
-                            onPress={()=>getProjects({producerName,projectName,departmentName,cityName},showProjects)}>
+                            onPress={()=>getProjects({producerName,projectName,departmentName,cityName})}>
                                 <FontAwesomeIcon icon={faSearch} size={14} style={{ color: 'white' , width:'30%', marginRight:10}} />
                                 <StyledText className="text-base" style={styles.registerText}>
                                     Buscar Proyecto
@@ -148,23 +160,108 @@ export const SearchProyect = () => {
                         </StyledView>
                     </StyledView>
 
-                    {/* <StyledView className="flex justify-center items-center w-80 p-5 rounded-xl bg-white m-5">
+                    {dataProject.length != 0 && showProjects == true && <StyledView className="flex justify-center items-center w-80 p-5 rounded-xl bg-white m-5">
                         <StyledView className="w-full">
-                        <StyledView className="flex justify-center">
+                        {/* <StyledView className="flex justify-center">
                         {showProjects == true && <Image
                             source={{uri:'https://sosty.blob.core.windows.net/sosty-public-files/20221109151204.jpeg'}}
                             style={{marginTop: 15, marginLeft: 45, marginBottom: 32}}
                         />}
-                        </StyledView>
+                        </StyledView> */}
 
-                            <StyledText style={{...TextStyle01.text, color:'black'}} font-medium className="text-xl mb-6 ">{projects[0].projectName}
-                            </StyledText>
-                            {showProjects == true ? <Text>{projects[0].projectName}</Text>: null}
+                            { dataProject.length != 0 && showProjects == true && <StyledText style={{...TextStyle01.text, color:'#00BD56'}} font-medium className="text-xl mb-6 ">{dataProject[1].projectName + ' (' + dataProject[1].projectCode + ')'}
+                            </StyledText> &&
+                            <StyledText style={{...TextStyle01.text, color:'#00BD56'}} font-medium className="text-xl mb-6 ">{dataProject[1].projectCode}
+                            </StyledText>}
+
+                            <StyledView style={{justifyContent: 'flex-start',display: 'flex',flexDirection: 'row'}}>
+                            <FontAwesomeIcon icon={faChartSimple} size={40} style={{ color: '#00BD56' , width:'30%', marginRight:10, marginTop:5}} />
+                            <StyledView >
+                                {dataProject.length != 0 && showProjects == true && <StyledText style={{...TextStyle01.text, color:'#00BD56'}} font-medium className="text-xl  ">{dataProject[1].projectProfitability + ' %(E.A)'}
+                                </StyledText>}
+                                <StyledText style={{...TextStyle01.text, color:'#00BD56', fontSize:15}} font-medium className="text-sm mb-6 ">Rentabilidad Estimada*
+                                </StyledText>
+                            </StyledView>
+                            </StyledView>
+
+                            <StyledView style={{justifyContent: 'flex-start',display: 'flex',flexDirection: 'row'}}>
+                            <FontAwesomeIcon icon={faUsers} size={40} style={{ color: '#00BD56' , width:'30%', marginRight:10, marginTop:5}} />
+                            <StyledView >
+                                {dataProject.length != 0 && showProjects == true && <StyledText style={{...TextStyle01.text, color:'#00BD56'}} font-medium className="text-xl  ">{dataProject[1].amountOfInvestors}
+                                </StyledText>}
+                                <StyledText style={{...TextStyle01.text, color:'#00BD56', fontSize:15}} font-medium className="text-sm mb-6 ">NeoGanaderos
+                                </StyledText>
+                            </StyledView>
+                            </StyledView>
+
+                            <StyledView style={{justifyContent: 'flex-start',display: 'flex',flexDirection: 'row'}}>
+                            <FontAwesomeIcon icon={faDollarSign} size={40} style={{ color: '#00BD56' , width:'30%', marginRight:10, marginTop:5}} />
+                            <StyledView >
+                                <StyledText style={{...TextStyle01.text, color:'#00BD56'}} font-medium className="text-xl  ">$700,000 COP
+                                </StyledText>
+                                <StyledText style={{...TextStyle01.text, color:'#00BD56', fontSize:15}} font-medium className="text-sm mb-6 ">Inversion Minima
+                                </StyledText>
+                            </StyledView>
+                            </StyledView>
+
+                            <StyledView style={{justifyContent: 'flex-start',display: 'flex',flexDirection: 'row'}}>
+                            <FontAwesomeIcon icon={faCalendarDays} size={40} style={{ color: '#00BD56' , width:'30%', marginRight:10, marginTop:5}} />
+                            <StyledView >
+                                {dataProject.length != 0 && showProjects == true && <StyledText style={{...TextStyle01.text, color:'#00BD56'}} font-medium className="text-xl  ">{dataProject[1].daysLeft + ' dias'}
+                                </StyledText>}
+                                <StyledText style={{...TextStyle01.text, color:'#00BD56', fontSize:15}} font-medium className="text-sm mb-6 ">Restantes
+                                </StyledText>
+                            </StyledView>
+                            </StyledView>
+
+                            <StyledView style={{justifyContent: 'flex-start',display: 'flex',flexDirection: 'row'}}>
+                            {/* <FontAwesomeIcon icon={faCalendarDays} size={40} style={{ color: '#00BD56' , width:'30%', marginRight:10, marginTop:5}} /> */}
+                            <StyledView >
+                                {dataProject.length != 0 && showProjects == true && <StyledText style={{...TextStyle01.text, color:'#00BD56', fontSize:15}} font-medium className="text-xl  ">{dataProject[1].finalKilogramPrice + ' ('+dataProject[1].investmentCollected+' Kg)'}
+                                </StyledText>}
+                                {dataProject.length != 0 && showProjects == true && <StyledText style={{...TextStyle01.text, color:'#00BD56', fontSize:15}} font-medium className="text-sm mb-6 ">{dataProject[1].amountOfCattles + ' Animales ('+dataProject[1].investmentRequired+' Kg)'}
+                                </StyledText>}
+                            </StyledView>
+                            </StyledView>
+                            <Separator></Separator>
+
+                            <StyledView style={{justifyContent: 'flex-start',display: 'flex',flexDirection: 'row'}}>
+                            {/* <FontAwesomeIcon icon={faCalendarDays} size={40} style={{ color: '#00BD56' , width:'30%', marginRight:10, marginTop:5}} /> */}
+                            <StyledView >
+                                {dataProject.length != 0 && showProjects == true && <StyledText style={{...TextStyle01.text, color:'#00BD56', fontSize:15}} font-medium className="text-xl  ">{dataProject[1].projectProgres + ' % Recaudado'}
+                                </StyledText>}
+                                {dataProject.length != 0 && showProjects == true && <StyledText style={{...TextStyle01.text, color:'orange', fontSize:15}} font-medium className="text-sm mb-6 ">{'En caso de no completar el 100% se comprarán los ' + dataProject[1].amountOfCattles + ' animales actuales y la rentabilidad puede variar un poco'}
+                                </StyledText>}
+                            </StyledView>
+                            </StyledView>
+
+                            <StyledView className="items-center">
+                        <StyledView className="w-60 mb-4">
+                            <TouchableOpacity
+                            style={styles.primaryButton}>
+                                <StyledText className="text-base" style={styles.registerText}>
+                                    Participar
+                                </StyledText>
+                            </TouchableOpacity>
+                        </StyledView>
+                    </StyledView>
+
+                    <StyledView className="items-center">
+                        <StyledView className="w-60 mb-4">
+                            <TouchableOpacity
+                                style={styles.button}>
+                                <StyledText className="text-base" style={styles.greenText}>
+                                    Mas Información
+                                </StyledText>
+                            </TouchableOpacity>
+                        </StyledView>
+                    </StyledView>
+                            
                             
                         </StyledView>
-                    </StyledView> */}
+                    </StyledView>}
 
-                    {showProjects == false ? <StyledView className="flex justify-center items-center w-80 p-5 rounded-xl bg-white m-5">
+                    {dataProject.length == 0 ? <StyledView className="flex justify-center items-center w-80 p-5 rounded-xl bg-white m-5">
                         <StyledText style={{...TextStyle01.text, color:'#00BD56'}} font-medium className="text-xl mb-6 ">No se encontraron projectos
                         </StyledText>
                     </StyledView>: null}
