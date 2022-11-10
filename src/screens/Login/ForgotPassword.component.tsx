@@ -1,3 +1,4 @@
+import {useNavigation} from '@react-navigation/native';
 import {styled} from 'nativewind';
 import React from 'react';
 import {Image, Text, TextInput, View} from 'react-native';
@@ -15,6 +16,7 @@ const StyledText = styled(Text);
 const StyledTextInput = styled(TextInput);
 
 export const ForgotPassword = () => {
+  const navigation = useNavigation();
   return (
     <StyledView className="w-full h-full flex justify-around items-center">
       <StyledView className="flex justify-center w-3/4">
@@ -49,7 +51,11 @@ export const ForgotPassword = () => {
         </StyledView>
 
         <StyledView className={'my-2'}>
-          <CustomButton title={'Cancelar'} secondaryBtn />
+          <CustomButton
+            title={'Cancelar'}
+            onPress={() => navigation.navigate('Login')}
+            secondaryBtn
+          />
         </StyledView>
       </StyledView>
     </StyledView>
