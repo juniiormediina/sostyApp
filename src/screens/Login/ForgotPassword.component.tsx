@@ -10,6 +10,7 @@ import {
   TextStyle03,
 } from '../../components/BaseStyles';
 import {CustomButton} from '../../components/CustomButton';
+import {FloatButton} from '../../components/FloatButton/FloatButton.component';
 
 const StyledView = styled(View);
 const StyledText = styled(Text);
@@ -58,6 +59,7 @@ export const ForgotPassword = () => {
           />
         </StyledView>
       </StyledView>
+      <FloatButton />
     </StyledView>
   );
 };

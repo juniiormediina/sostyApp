@@ -4,6 +4,7 @@ import {styled} from 'nativewind';
 import React, {useState} from 'react';
 import {Alert, Button, Image, Text, TextInput, View} from 'react-native';
 import Logo from '../../assets/Logo.png';
+import {FloatButton} from '../../components/FloatButton/FloatButton.component';
 
 const StyledView = styled(View);
 const StyledText = styled(Text);
@@ -104,6 +105,7 @@ export const Login = () => {
           title={'Ingresar'}
           onPress={() => getSostyToken()}></StyledButton>
       </StyledView>
+      <FloatButton />
     </StyledView>
   );
 };
