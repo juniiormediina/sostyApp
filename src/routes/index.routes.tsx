@@ -14,10 +14,10 @@ export const Routes = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
+        <Stack.Screen name="Investments" component={Investments} />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="CreateAccount" component={CreateAccount} />
         <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
-        <Stack.Screen name="Investments" component={Investments} />
         <Stack.Screen name="SearchProyect" component={SearchProyect} />
         <Stack.Screen name="Help" component={Help} />
         <Stack.Screen name="User" component={User} />
