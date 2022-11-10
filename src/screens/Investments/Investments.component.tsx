@@ -67,6 +67,7 @@ export default function Investments() {
                 <StyledText>Total Invertido</StyledText>
               </StyledView>
             </StyledView>
+
             <StyledView className="w-80 h-28 p-5 m-5 rounded-lg bg-white flex flex-row justify-center items-center">
               <StyledView
                 className="bg-slate-500 p-3 rounded-full"
@@ -82,6 +83,7 @@ export default function Investments() {
                 <StyledText>Total Recibido</StyledText>
               </StyledView>
             </StyledView>
+
             <StyledView className="w-80 h-28 p-5 m-5 rounded-lg bg-white flex flex-row justify-center items-center">
               <StyledView
                 className="bg-slate-500 p-3 rounded-full"
