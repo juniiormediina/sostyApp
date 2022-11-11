@@ -7,9 +7,17 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useNavigation} from '@react-navigation/native';
 import {styled} from 'nativewind';
 import React, {useEffect} from 'react';
-import {Image, ScrollView, StyleSheet, Text, View} from 'react-native';
+import {
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import {Row, Rows, Table} from 'react-native-table-component';
 import Logo from '../../assets/Logo.png';
+import {TextStyle01} from '../../components/BaseStyles';
 import {FloatButton} from '../../components/FloatButton/FloatButton.component';
 import {Menu} from '../../components/Menu.component';
 
@@ -181,6 +189,19 @@ export default function Investments() {
                 </View>
               </ScrollView>
             </StyledView>
+
+            <StyledView className="items-center">
+              <StyledView className="w-60 mb-4">
+                <TouchableOpacity style={styles.button}>
+                  <StyledText
+                    className="text-base text-center"
+                    style={styles.greenText}
+                    onPress={() => navigation.navigate('SearchProyect')}>
+                    Buscar Proyectos para participar
+                  </StyledText>
+                </TouchableOpacity>
+              </StyledView>
+            </StyledView>
           </StyledView>
         </StyledScroll>
         <FloatButton />
@@ -194,4 +215,19 @@ const styles = StyleSheet.create({
   container: {flex: 1, padding: 16, paddingTop: 30, backgroundColor: '#fff'},
   head: {height: 40, backgroundColor: '#f1f8ff'},
   text: {margin: 6},
+  button: {
+    justifyContent: 'center',
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#FFFFFF',
+    borderColor: '#00BD56',
+    borderRadius: 12,
+    borderWidth: 2,
+    padding: 10,
+  },
+  greenText: {
+    ...TextStyle01.text,
+    color: '#00BD56',
+  },
 });

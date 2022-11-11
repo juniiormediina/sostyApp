@@ -212,7 +212,7 @@ export const SearchProyect = () => {
           {dataProject.length != 0 && showProjects == true && (
             <StyledView className="flex justify-center items-center w-80 p-5 rounded-xl bg-white m-5">
               <StyledView className="w-full">
-                {dataProject.length != 0 &&
+                {dataProject.length !== 0 &&
                   showProjects == true && (
                     <StyledText
                       style={{...TextStyle01.text, color: '#00BD56'}}
